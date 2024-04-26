@@ -2,8 +2,8 @@ package com.mjovanc;
 
 public class PlatformThreads {
     public static void main(String[] args) {
-        int numProducers = 1_000;
-        int numConsumers = 1_000;
+        int numProducers = 10_000;
+        int numConsumers = 10_000;
         int totalTasks = numProducers * 100;
 
         Buffer buffer = new Buffer(totalTasks);
