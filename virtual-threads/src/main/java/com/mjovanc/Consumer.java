@@ -1,15 +1,6 @@
 package com.mjovanc;
 
-public class Consumer implements Runnable {
-    private Buffer buffer;
-    private String name;
-    private int numTasksToConsume;
-
-    public Consumer(Buffer buffer, String name, int numTasksToConsume) {
-        this.buffer = buffer;
-        this.name = name;
-        this.numTasksToConsume = numTasksToConsume;
-    }
+public record Consumer(Buffer buffer, String name, int numTasksToConsume) implements Runnable {
 
     @Override
     public void run() {

@@ -2,8 +2,8 @@ package com.mjovanc;
 
 public class VirtualThreads {
     public static void main(String[] args) {
-        int numProducers = 1_000;
-        int numConsumers = 1_000;
+        int numProducers = 10_000;
+        int numConsumers = 10_000;
         int totalTasks = numProducers * 100;
 
         Buffer buffer = new Buffer(totalTasks);
@@ -28,6 +28,7 @@ public class VirtualThreads {
                 producerThreads[i].join();
             }
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             e.printStackTrace();
         }
 
@@ -40,6 +41,7 @@ public class VirtualThreads {
                 consumerThreads[i].join();
             }
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             e.printStackTrace();
         }
 

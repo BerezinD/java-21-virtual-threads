@@ -3,8 +3,8 @@ package com.mjovanc;
 import java.util.LinkedList;
 
 public class Buffer {
-    private LinkedList<String> data;
-    private int capacity;
+    private final LinkedList<String> data;
+    private final int capacity;
 
     public Buffer(int capacity) {
         this.data = new LinkedList<>();
@@ -24,7 +24,7 @@ public class Buffer {
         notifyAll();
     }
 
-    public synchronized String consume(String consumerName) {
+    public synchronized void consume(String consumerName) {
         while (data.isEmpty()) {
             try {
                 System.out.println(consumerName + " is waiting for tasks.");
@@ -36,6 +36,5 @@ public class Buffer {
         String task = data.removeFirst();
         System.out.println(consumerName + " consumed " + task);
         notifyAll();
-        return task;
     }
 }
