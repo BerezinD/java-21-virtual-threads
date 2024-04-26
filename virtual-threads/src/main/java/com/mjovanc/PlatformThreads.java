@@ -28,6 +28,7 @@ public class PlatformThreads {
                 producerThreads[i].join();
             }
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             e.printStackTrace();
         }
 
@@ -40,6 +41,7 @@ public class PlatformThreads {
                 consumerThreads[i].join();
             }
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             e.printStackTrace();
         }
 
